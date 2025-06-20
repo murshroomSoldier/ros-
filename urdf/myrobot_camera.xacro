@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<robot name="myrobot_camera" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find myrobot_camera_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find myrobot_camera_description)/urdf/myrobot_camera.trans" />
+<xacro:include filename="$(find myrobot_camera_description)/urdf/myrobot_camera.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.006355291024288206 -1.717650887223425e-17 0.048350435240959735" rpy="0 0 0"/>
+    <mass value="2.245076437943009"/>
+    <inertia ixx="0.00791" iyy="0.009471" izz="0.0162" ixy="-0.0" iyz="-0.0" ixz="0.000412"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-5.790023100122029e-18 -0.012499999999999997 0.0" rpy="0 0 0"/>
+    <mass value="0.2797980957103409"/>
+    <inertia ixx="0.000189" iyy="0.00035" izz="0.000189" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.1 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.1 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-5.790023100122029e-18 0.012499999999999997 0.0" rpy="0 0 0"/>
+    <mass value="0.2797980957103409"/>
+    <inertia ixx="0.000189" iyy="0.00035" izz="0.000189" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.1 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.1 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://myrobot_camera_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 1" type="continuous">
+  <origin xyz="0.0 -0.1 0.05" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 2" type="continuous">
+  <origin xyz="0.0 0.1 0.05" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+</robot>
