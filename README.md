@@ -1,1 +1,6 @@
 請將檔案放入名為myrobot_camera_description的資料夾中
+將檔案放入~/catkin_ws/src中
+在終端機中輸入catkin_make
+在終端機中輸入roscore
+在第二個終端機中輸入 roslaunch myrobot_camera_description gazebo.launch
+在第三個端機中輸入 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
